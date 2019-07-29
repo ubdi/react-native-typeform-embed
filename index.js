@@ -1,32 +1,20 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { WebView } from 'react-native-webview'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { WebView } from "react-native-webview";
 
 class TypeformEmbed extends Component {
   onLoad = () => {
-    const {
-      url,
-      hideHeaders,
-      hideFooter,
-      opacity,
-      buttonText,
-      mode,
-      autoOpen,
-      autoClose
-    } = this.props
+    const { url, hideHeaders, hideFooter, opacity, buttonText } = this.props;
 
     const options = {
       hideHeaders,
       hideFooter,
       opacity,
-      buttonText,
-      mode,
-      autoOpen,
-      autoClose
-    }
+      buttonText
+    };
 
     if (this.typeformElm) {
-      const stringifedOptions = JSON.stringify(JSON.stringify(options))
+      const stringifedOptions = JSON.stringify(JSON.stringify(options));
       const embedCode = `
       {
         const onSubmit = () => window.ReactNativeWebView.postMessage("onSubmit")
@@ -34,20 +22,20 @@ class TypeformEmbed extends Component {
         typeformEmbed.makeWidget(document.getElementById('typeform-embed'), '${url}', options)
       }
       true
-      `
-      this.typeformElm.injectJavaScript(embedCode)
+      `;
+      this.typeformElm.injectJavaScript(embedCode);
     }
-  }
+  };
 
   onMessage = event => {
-    const { data } = event.nativeEvent
-    if (data === 'onSubmit') return this.props.onSubmit()
-  }
+    const { data } = event.nativeEvent;
+    if (data === "onSubmit") return this.props.onSubmit();
+  };
 
   render() {
     return (
       <WebView
-        originWhitelist={['*']}
+        originWhitelist={["*"]}
         ref={el => (this.typeformElm = el)}
         source={{
           html:
@@ -56,45 +44,33 @@ class TypeformEmbed extends Component {
         onLoadEnd={this.onLoad}
         onMessage={this.onMessage}
       />
-    )
+    );
   }
 }
 
 TypeformEmbed.propTypes = {
-  style: PropTypes.object,
   url: PropTypes.string.isRequired,
-  popup: PropTypes.bool,
-  hideHeaders: PropTypes.bool,
-  hideFooter: PropTypes.bool,
+  style: PropTypes.object,
 
   // Widget options
+  hideHeaders: PropTypes.bool,
+  hideFooter: PropTypes.bool,
   opacity: PropTypes.number,
   buttonText: PropTypes.string,
-
-  // Popup options
-  mode: PropTypes.string,
-  autoOpen: PropTypes.bool,
-  autoClose: PropTypes.number,
   onSubmit: PropTypes.func
-}
+};
 
 // Default values taken from official Typeform docs
 // https://developer.typeform.com/embed/modes/
 TypeformEmbed.defaultProps = {
   style: {},
-  popup: false,
-  hideHeaders: false,
-  hideFooter: false,
-  onSubmit: () => {},
 
   // Widget options
+  hideHeaders: false,
+  hideFooter: false,
   opacity: 100,
-  buttonText: 'Start',
+  buttonText: "Start",
+  onSubmit: () => {}
+};
 
-  // Popup options
-  mode: 'popup', // options: "popup", "drawer_left", "drawer_right"
-  autoOpen: false,
-  autoClose: 5
-}
-
-export default TypeformEmbed
+export default TypeformEmbed;
