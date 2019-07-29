@@ -1,0 +1,24 @@
+{
+  "name": "react-native-typeform-embed",
+  "version": "1.0.0",
+  "description": "React Native wrapper for embedding Typeform",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ubdi/react-native-typeform-embed.git"
+  },
+  "keywords": [
+    "react-native",
+    "typeform",
+    "embed"
+  ],
+  "author": "Harun Smrkovic",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ubdi/react-native-typeform-embed/issues"
+  },
+  "homepage": "https://github.com/ubdi/react-native-typeform-embed#readme"
+}
