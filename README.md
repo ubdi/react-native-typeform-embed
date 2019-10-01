@@ -40,6 +40,7 @@ Most props are based on the official parameters from [Typeform Embed SDK](https:
 | `opacity`     | Background opacity. Valid values include any integer between `0` (completely transparent) and `100` (completely opaque). Note that this isn't the same as the CSS opacity scale (0-1).<br />_Widget mode option_ | `100`     |
 | `buttonText`  | Text to display in the "Start" button. Displayed only on touch-screen and mobile devices.<br />_Widget mode option_                                                                                              | `"Start"` |
 | `onSubmit`    | **PRO accounts only**. Callback event that will execute immediately after a respondent successfully submits the typeform. <br />                                                                                 | N/A       |
+| `webView`     | Props passed to the WebView that displays the form                                                                                                                                                               | `{}`      |
 
 ### License
 
