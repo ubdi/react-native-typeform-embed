@@ -43,6 +43,7 @@ class TypeformEmbed extends Component {
         }}
         onLoadEnd={this.onLoad}
         onMessage={this.onMessage}
+        {...this.props.webView}
       />
     );
   }
@@ -64,6 +65,7 @@ TypeformEmbed.propTypes = {
 // https://developer.typeform.com/embed/modes/
 TypeformEmbed.defaultProps = {
   style: {},
+  webView: {},
 
   // Widget options
   hideHeaders: false,
