@@ -1,6 +1,6 @@
 {
   "name": "react-native-typeform-embed",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "React Native wrapper for embedding Typeform",
   "main": "index.js",
   "scripts": {
