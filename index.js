@@ -7,6 +7,7 @@ class TypeformEmbed extends Component {
     const { url, hideHeaders, hideFooter, opacity, buttonText } = this.props;
 
     const options = {
+      mode: "popup",
       hideHeaders,
       hideFooter,
       opacity,
@@ -19,7 +20,8 @@ class TypeformEmbed extends Component {
       {
         const onSubmit = () => window.ReactNativeWebView.postMessage("onSubmit")
         const options = Object.assign({}, JSON.parse(${stringifedOptions}), {onSubmit})
-        typeformEmbed.makeWidget(document.getElementById('typeform-embed'), '${url}', options)
+        const ref = typeformEmbed.makePopup('${url}', options)
+        ref.open()
       }
       true
       `;
