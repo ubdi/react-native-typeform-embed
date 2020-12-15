@@ -19,6 +19,7 @@ class App extends React.Component {
       <TypeformEmbed
         url="https://demo.typeform.com/to/njdbt5"
         onSubmit={() => alert("Submitted!")}
+        onClose={() => alert("Closed!")}
       />
     );
   }
