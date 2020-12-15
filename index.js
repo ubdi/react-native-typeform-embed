@@ -19,7 +19,8 @@ class TypeformEmbed extends Component {
       const embedCode = `
       {
         const onSubmit = () => window.ReactNativeWebView.postMessage("onSubmit")
-        const options = Object.assign({}, JSON.parse(${stringifedOptions}), {onSubmit})
+        const onClose = () => window.ReactNativeWebView.postMessage("onClose")
+        const options = Object.assign({}, JSON.parse(${stringifedOptions}), {onSubmit,onClose})
         const ref = typeformEmbed.makePopup('${url}', options)
         ref.open()
       }
@@ -32,6 +33,7 @@ class TypeformEmbed extends Component {
   onMessage = event => {
     const { data } = event.nativeEvent;
     if (data === "onSubmit") return this.props.onSubmit();
+    if (data === "onClose") return this.props.onClose();
   };
 
   render() {
